@@ -4,8 +4,9 @@
 	<target name="init">
 		<property name="version" value="1.3.10"/>
 		
-		<property name="ant.build.javac.target" value="1.8"/>
-		<property name="ant.build.javac.source" value="1.8"/>
+		<property name="javac.release" value="8"/>
+		<property name="ant.build.javac.target" value="${javac.release}"/>
+		<property name="ant.build.javac.source" value="${javac.release}"/>
 		<property name="blender.java.package" value="org.blender"/>
 		<property name="java.blend.docs" value="${basedir}/../org.cakelab.blender.dnadoc/resources/dnadoc"/>
 		<property name="web.downloads" value="${user.home}/tmp/public_html/projects/JavaBlend/downloads"/>
@@ -41,26 +42,14 @@
 			<arg value="-u"/><arg value="true"/>
 			<classpath>
 	      		<pathelement location="bin"/>
+	      		<pathelement location="../org.cakelab.blender.io/bin"/>
 	      		<pathelement location="../org.cakelab.json/bin"/>
 	      		<pathelement location="../org.cakelab.jdoxml/bin"/>
-				<fileset dir="lib">
-					<include name="**/*.jar"/>
-				</fileset>
 			</classpath>
 		</java>
 		
 		<copy todir="${srcdir}">
-			<fileset dir="src" casesensitive="yes">
-				<include name="**/*"/>
-			</fileset>
-		</copy>
-		<copy todir="${srcdir}">
-			<fileset dir="../org.cakelab.json/src" casesensitive="yes">
-				<include name="**/*"/>
-			</fileset>
-		</copy>
-		<copy todir="${srcdir}">
-			<fileset dir="../org.cakelab.jdoxml/src" casesensitive="yes">
+			<fileset dir="../org.cakelab.blender.io/src" casesensitive="yes">
 				<include name="**/*"/>
 			</fileset>
 		</copy>
@@ -69,11 +58,9 @@
 	<target name="package.src" depends="generate">
 		<echo message="creating source code package"/>
 		<copy todir="${packdir}">
-			<fileset dir="." casesensitive="yes">
+			<fileset dir="../org.cakelab.blender.io/." casesensitive="yes">
 				<include name="doc/**/*"/>
 				<include name="licenses/**/*"/>
-				<include name="export-DNA-lib.xml"/>
-				<include name="generate.sh"/>
 			</fileset>
 		</copy>
 		
@@ -122,9 +109,10 @@
 		<javac srcdir="${srcdir}"
 			destdir="${bindir}"
 			classpath="${jarfile}"
-			debug="off"
+			debug="true"
 			includeAntRuntime="false"
 			compiler="modern"
+			release="${javac.release}"
 		/>
 		<echo message="copying resources"/>
 		<copy todir="${bindir}">
