@@ -137,6 +137,11 @@
 
 	<target name="package.all">
 		<antcall target="package">
+			<param name="blender.version" value="3.04"/>
+			<param name="blender.file.version.cur" value="3.04.6"/>
+			<param name="blender.file.version.min" value="3.04.3"/>
+		</antcall>
+		<antcall target="package">
 			<param name="blender.version" value="3.03"/>
 			<param name="blender.file.version.cur" value="3.03.6"/>
 			<param name="blender.file.version.min" value="3.00.43"/>

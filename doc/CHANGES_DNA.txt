@@ -1,3 +1,27 @@
+
+3.4 -> 3.2
+==========
+
+Introduced C++ code in
+- DNA_mesh_types.h
+
+
+Changes to
++ ImageTile
++ Image
++ Base (dropped: sx, sy)
++ Mesh (
+	dropped: mloopuv, mloopcol, 
+	deprecated: mvert, medge, mpoly, mloop, dvert, mface
+	note: corresponding data can be retrieved from ldata, vdata, pdata, etc.
+  )
++ bObject (renamed: obmat, imat)
++ Sculpt (added: automasking diverse)
++ Scene (added: DrawDataList drawdata)
++ SpaceImage
+
+
+
 3.3 -> 3.2
 ==========
 
