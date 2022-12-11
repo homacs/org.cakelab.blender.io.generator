@@ -117,6 +117,18 @@ IX. Create new DNA Lib
 
 
 
+X. Branches and Tags
+--------------------
+Affects:
+   - org.cakelab.blender.dna
+   - org.cakelab.blender.viewer
+   - org.cakelab.blender.fileviewer
+1. Check if the new blender version is an LTS release (https://code.blender.org/2020/02/release-planning-2020-2025)
+2. LTS releases get their own support branch with the following pattern
+   printf: "support/blender-%d.%02d", BMAJOR, BMINOR
+3. Tags have the following pattern
+   printf: "blender-%d.%d.%d-javablend-%d.%d.%d", BMAJOR, BMINOR, BPATCH, JBMAJOR, JBMINOR, JBPATCH
+
 
 X. Publish
 ---------------

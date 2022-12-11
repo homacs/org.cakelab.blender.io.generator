@@ -12,6 +12,7 @@ CODE:
 
 
 BUILD ENVIRONMENT:
++ improve version.properties by patch version
 + common approach to retrieving blender version in scripts and maven build
 
 
